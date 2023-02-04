@@ -3,7 +3,7 @@ import { Button, Col, Row, Container } from "reactstrap";
 
 
 const EntryHeader = () => {
-  return <h2></h2>;
+  return <h2>Journals are meant for thoughts</h2>;
 };
 const EntryBody = (props) => {
   const lines = props.entryData.map((line, index) => {
