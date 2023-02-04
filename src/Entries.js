@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Button, Col, Row, Container } from "reactstrap";
+
+
 const EntryHeader = () => {
   return <h2></h2>;
 };
