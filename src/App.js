@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Entries from "./Entries";
+import Form from "./Form";
+class App extends Component {
+  state = {
+    entries: [],
+  };
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  removeEntry = (index) => {
+    const { entries } = this.state;
+
+    this.setState({
+      entries: entries.filter((entry, i) => {
+        return i !== index;
+      }),
+    });
+  };
+  handleSubmit = (entry) => {
+    this.setState({ entries: [...this.state.entries, entry] });
+  };
+  render() {
+    const { entries } = this.state;
+    return (
+      <div className="App container">
+        <h1 style={{ paddingBottom: "30px", paddingTop: "10px" }}>
+          {" "}
+          My Journal App{" "}
+        </h1>
+        <Form handleSubmit={this.handleSubmit} />
+        <Entries entryData={entries} removeEntry={this.removeEntry} />
+      </div>
+    );
+  }
 }
 
 export default App;
